@@ -57,7 +57,7 @@ export default function LoginPage(){
                         
                     </div>
                     <div>
-                            <button className="w-full active:bg-yellow-300 bg-red-200 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white " >Sign in to your account</button>
+                            <button className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white " >Sign in to your account</button>
                     </div>
 
                 </div>
