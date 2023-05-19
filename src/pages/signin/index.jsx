@@ -4,7 +4,7 @@ import googleicon from "@/assets/icons/google-color-svgrepo-com.svg"
 import formimage from "@/assets/pictures/illustration.svg"
 import Image from "next/image"
 
-export default function LoginPage(){
+export default function SigninPage(){
     return(
         <>
             <div className="flex min-[0px]:flex-col-reverse md:flex-row w-10/12 mx-auto my-[50px] ">
