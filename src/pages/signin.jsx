@@ -3,10 +3,16 @@ import githubicon from "@/assets/icons/github-142-svgrepo-com.svg"
 import googleicon from "@/assets/icons/google-color-svgrepo-com.svg"
 import formimage from "@/assets/pictures/illustration.svg"
 import Image from "next/image"
+import AlertComponent from "@/components/Alert"
+import { useEffect, useState } from "react"
 
 export default function SigninPage(){
+
+    let [ Alert , setAlert ] = useState(false)
+
     return(
         <>
+            <AlertComponent alert={ Alert } changeAlert={ ()=> setAlert( !Alert )  } />
             <div className="flex min-[0px]:flex-col-reverse md:flex-row w-10/12 mx-auto my-[50px] ">
                 
                 <div className="min-[0px]:w-full md:w-6/12 mx-auto" >
@@ -38,27 +44,27 @@ export default function SigninPage(){
                             <button className="border rounded-[15px] min-[0px]:p-1 sm:p-2 hover:bg-gray-100 hover:duration-300 transition " >
                                 <div className="flex items-center w-7/12 mx-auto min-[0px]:gap-[15px] sm:gap-[10px] justify-center " >
                                     <Image className="sm:w-10 sm:h-10 min-[0px]:h-5 min-[0px]:w-5 md:w-7 md:h-7 rounded-full" src={googleicon} alt="" />
-                                    <span className="md:text-base min-[0px]:text-xs" >Login With Google&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <span className="md:text-[12px] lg:text-base min-[0px]:text-xs" >Login With Google&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </div>
                             </button>
                             {/*  */}
                             <button className="border rounded-[15px] min-[0px]:p-1 sm:p-2 hover:bg-gray-100 hover:duration-300 transition" >
                                 <div className="flex items-center w-7/12 mx-auto min-[0px]:gap-[15px] sm:gap-[10px] justify-center" >
                                     <Image className="sm:w-10 sm:h-10 min-[0px]:h-5 min-[0px]:w-5 md:w-7 md:h-7 rounded-full" src={fbicon} alt="" />
-                                    <span className="md:text-base min-[0px]:text-xs" >Login With Facebook</span>
+                                    <span className="md:text-[12px] lg:text-base min-[0px]:text-xs" >Login With Facebook</span>
                                 </div>
                             </button>
                             {/*  */}
                             <button className="border rounded-[15px] min-[0px]:p-1 sm:p-2 hover:bg-gray-100 hover:duration-300 transition" >
                                 <div className="flex items-center w-7/12 mx-auto min-[0px]:gap-[15px] sm:gap-[10px] justify-center" >
                                     <Image className="sm:w-10 sm:h-10 min-[0px]:h-5 min-[0px]:w-5 md:w-7 md:h-7 rounded-full" src={githubicon} alt="" />
-                                    <span className="md:text-base min-[0px]:text-xs" >Login With GitHub&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <span className="md:text-[12px] lg:text-base min-[0px]:text-xs" >Login With GitHub&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 </div>
                             </button>
                             
                         </div>
                         <div>
-                            <button className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white mb-[20px] " >Sign in to your account</button>
+                            <button onClick={ ()=> setAlert( true ) } className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white mb-[20px] " >Sign in to your account</button>
                         </div>
 
                     </div>
