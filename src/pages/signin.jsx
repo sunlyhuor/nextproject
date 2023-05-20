@@ -12,7 +12,7 @@ export default function SigninPage(){
 
     return(
         <>
-            <AlertComponent alert={ Alert } changeAlert={ ()=> setAlert( !Alert )  } />
+            <AlertComponent alert={ Alert } changeAlert={ ()=> setAlert( false )  } />
             <div className="flex min-[0px]:flex-col-reverse md:flex-row w-10/12 mx-auto my-[50px] ">
                 
                 <div className="min-[0px]:w-full md:w-6/12 mx-auto" >
