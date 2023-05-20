@@ -5,14 +5,42 @@ import formimage from "@/assets/pictures/illustration.svg"
 import Image from "next/image"
 import AlertComponent from "@/components/Alert"
 import { useEffect, useState } from "react"
+import { validateEmail } from "@/assets/components/components"
 
 export default function SigninPage(){
 
     let [ Alert , setAlert ] = useState(false)
+    let [Message , setMessage] = useState(null)
+    let [ Email , setEmail ] = useState(null)
+    let [Password , setPassword] = useState("")
+
+    
+    function handleInputEmail(e){
+        setEmail( e.target.value )
+    }
+
+    function handleInputPassword(e){
+        setPassword( e.target.value )
+    }
+
+    function handleSubmit(){
+        if( Password == "" || Email == "" ){
+            setAlert(true)
+            setMessage("All fields are required!")
+        }
+        else if( !validateEmail( Email ) ){
+            setAlert(true)
+            setMessage("Email should like? example@test.com")
+        }
+        else{
+            setAlert(true)
+            setMessage("Signin successfully")
+        }
+    }
 
     return(
         <>
-            <AlertComponent alert={ Alert } changeAlert={ ()=> setAlert( false )  } />
+            <AlertComponent alert={ Alert } message={Message} changeAlert={ ()=> setAlert( false )  } />
             <div className="flex min-[0px]:flex-col-reverse md:flex-row w-10/12 mx-auto my-[50px] ">
                 
                 <div className="min-[0px]:w-full md:w-6/12 mx-auto" >
@@ -24,12 +52,12 @@ export default function SigninPage(){
 
                             <div className="flex items-center min-[0px]:flex-col md:flex-row justify-between min-[0px]:20px md:gap-[30px] " >
                                 <div className="relative z-0 min-[0px]:w-full md:w-6/12 mb-6 group">
-                                    <input type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+                                    <input onChange={ handleInputEmail  } type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
                                 </div>
                                 <div className="relative z-0 min-[0px]:w-full md:w-6/12 mb-6 group">
-                                    <input type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                                    <input onChange={ handleInputPassword } type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                                 </div>
                             </div>  
 
@@ -64,7 +92,7 @@ export default function SigninPage(){
                             
                         </div>
                         <div>
-                            <button onClick={ ()=> setAlert( true ) } className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white mb-[20px] " >Sign in to your account</button>
+                            <button onClick={ handleSubmit } className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white mb-[20px] " >Sign in to your account</button>
                         </div>
 
                     </div>
