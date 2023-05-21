@@ -8,8 +8,11 @@ export default function Home() {
   return (
     <main>
       <Head>
-        <title>Login Page - Sun LyHuor</title>
+        <title>Home page Sun LyHuor</title>
       </Head>
+      <section>
+        <h1>Home Page</h1>
+      </section>
       
     </main>
   )
