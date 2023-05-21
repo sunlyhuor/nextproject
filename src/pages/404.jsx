@@ -2,6 +2,7 @@ import Link from "next/link"
 import NotFound from "@/assets/pictures/404-computer.svg"
 import Image from "next/image"
 import { useState } from "react"
+import Head from "next/head"
 
 export default function NotFoundPage(){
 
