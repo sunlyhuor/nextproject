@@ -4,6 +4,8 @@ import navIconOpen from "@/assets/icons/more-svgrepo-com.svg"
 import navIconClose from "@/assets/icons/more-svgrepo-com (1).svg"
 import Image from "next/image"
 import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {faBurger , faXmark } from "@fortawesome/free-solid-svg-icons"
 
 export default function HeaderComponent(){
     let [ Hamberger , setHamberger ] = useState(false)
@@ -15,13 +17,13 @@ export default function HeaderComponent(){
                 </section>
 
                 <div>
-                    <div className="absolute top-[0px] right-[20px]" >
+                    <div className="absolute top-[5px] right-[20px]" >
                         <button onClick={()=> setHamberger(!Hamberger) } >
                             {
                                 Hamberger?(
-                                    <Image src={navIconClose} className="w-[40px] p-0 active:bg-yellow-200" />
+                                    <FontAwesomeIcon className="text-[25px]" icon={faXmark} />
                                     ):(
-                                    <Image src={navIconOpen} className="w-[50px] p-0 active:bg-yellow-200" />
+                                    <FontAwesomeIcon className="text-[25px]" icon={faBurger} />
                                 )
                             }
                         </button>
