@@ -55,13 +55,41 @@ export default function SignupPage(){
     }
 
     function handleSubmit(){
-        if( Password == "" || Email == "" ){
+        console.log(Password)
+        if( 
+            Password == "" || Password == null ||
+            Email == "" || Email == null ||
+            ConfirmPassword == "" || ConfirmPassword == null ||
+            FirstName == "" || FirstName == null ||
+            LastName == "" || LastName == null ||
+            UserName == "" || UserName == null
+         ){
             setAlert(true)
             setMessage("All fields are required!")
+        }
+        else if( UserName.length < 6 ){
+            setAlert(true)
+            setMessage("The username field must more than 6 character!")
         }
         else if( !validateEmail( Email ) ){
             setAlert(true)
             setMessage("Email should like? example@test.com")
+        }
+        else if( FirstName.length < 2 ) {
+            setAlert(true)
+            setMessage("The firstname field must more than 2 character!")
+        }
+        else if( LastName.length < 2 ){
+            setAlert(true)
+            setMessage("The lastname field must more than 2 character!")
+        }
+        else if( Password.length < 8 || ConfirmPassword.length < 8 ){
+            setAlert(true)
+            setMessage("The password and confirm password are more than 8 character!")
+        }
+        else if( Password != ConfirmPassword ){
+            setAlert(true)
+            setMessage("Password and Confirm Password must the same!")
         }
         else{
             setAlert(true)
@@ -79,7 +107,7 @@ export default function SignupPage(){
                 <AlertComponent alert={ Alert } message={Message} changeAlert={ ()=> setAlert( false )  } />
                 <div className="flex min-[0px]:flex-col-reverse md:flex-row w-10/12 mx-auto my-[50px] ">
                     
-                    <div className="min-[0px]:w-full md:w-6/12 mx-auto" >
+                    <div  className="min-[0px]:w-full md:w-6/12 mx-auto" >
                         <div className="drop-shadow-md bg-white rounded px-[20px] py-[30px] w-full min-[0px]:w-full " >
                             <h2 className="text-2xl font-bold mb-[5px]">Create Your Account</h2>
                             <p className="text-sm text-gray-400 " >Start your website in seconds. Already have an account? <Link className="text-blue-800 underline" href="/signin" >Sign In</Link></p>
@@ -92,7 +120,7 @@ export default function SignupPage(){
                                         <label htmlFor="floating_firstname" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Firstname</label>
                                     </div>
                                     <div className="relative z-0 min-[0px]:w-full md:w-6/12 mb-6 group">
-                                        <input onChange={handleLastName} onKeyDown={ handleEnter } type="password" name="floating_lastname" id="floating_lastname" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                        <input onChange={handleLastName} onKeyDown={ handleEnter } type="text" name="floating_lastname" id="floating_lastname" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                         <label htmlFor="floating_lastname" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Lastname</label>
                                     </div>
                                 </div>
@@ -104,7 +132,7 @@ export default function SignupPage(){
                                         <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
                                     </div>
                                     <div className="relative z-0 min-[0px]:w-full md:w-6/12 mb-6 group">
-                                        <input onChange={handleInputUserName} onKeyDown={ handleEnter } type="password" name="floating_username" id="floating_username" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                        <input onChange={handleInputUserName} onKeyDown={ handleEnter } type="text" name="floating_username" id="floating_username" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                         <label htmlFor="floating_username" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Username</label>
                                     </div>
                                 </div>
@@ -112,7 +140,7 @@ export default function SignupPage(){
                                 {/*  */}
                                  <div className="flex items-center min-[0px]:flex-col md:flex-row justify-between min-[0px]:20px md:gap-[30px] " >
                                     <div className="relative z-0 min-[0px]:w-full md:w-6/12 mb-6 group">
-                                        <input onChange={handleInputPassword} onKeyDown={ handleEnter } type="text" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                        <input onChange={handleInputPassword} onKeyDown={ handleEnter } type="password" name="floating_password" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                         <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                                     </div>
                                     <div className="relative z-0 min-[0px]:w-full md:w-6/12 mb-6 group">
@@ -123,8 +151,8 @@ export default function SignupPage(){
 
                                 {/*  */}
                                 <div className="min-[0px]:mb-[15px] md:mb-[20px]" >
-                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload profile <span className="text-gray-300 " >(optional)</span> </label>
-                                    <input class="w-full" id="file_input" type="file" />
+                                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="file_input">Upload profile <span className="text-gray-300 " >(optional)</span> </label>
+                                    <input className="w-full" id="file_input" type="file" />
                                 </div>
                                 {/*  */}
 

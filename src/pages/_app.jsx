@@ -1,7 +1,11 @@
 import '@/styles/globals.css'
 import Head from 'next/head'
+import AOS from "aos"
 
 export default function App({ Component, pageProps }) {
+  
+  // AOS.init({});
+
   return (
     <>
       <Head>
