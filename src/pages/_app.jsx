@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import Head from 'next/head'
 import AOS from "aos"
+import HeaderComponent from '@/components/Header'
 
 export default function App({ Component, pageProps }) {
   
@@ -14,7 +15,10 @@ export default function App({ Component, pageProps }) {
           <meta http-equiv="X-UA-Compatible" content="IE=7" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <Component {...pageProps} />
+      <main>
+        <HeaderComponent />
+        <Component {...pageProps} />
+      </main>
     </>
   )
 }
