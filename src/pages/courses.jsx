@@ -2,6 +2,7 @@ import course_style from  "@/styles/course.module.css"
 import Link from "next/link"
 
 export default function CoursePage(){
+
     return(
         <>
             <main className="w-10/12 mx-auto" >

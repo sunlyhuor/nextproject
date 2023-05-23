@@ -6,9 +6,11 @@ import Image from "next/image"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faBurger , faXmark } from "@fortawesome/free-solid-svg-icons"
+import { useRouter } from "next/router"
 
 export default function HeaderComponent(){
     let [ Hamberger , setHamberger ] = useState(false)
+    let router = useRouter()
     return(
         <>
             <header className="relative" >
@@ -30,14 +32,14 @@ export default function HeaderComponent(){
                     </div>
                     <nav className={`z-10 absolute top-[50px] right-[20px]  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 ${Hamberger ? "block":"hidden"} `}>
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/">Home</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/about" >About</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/courses" >Courses</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/blogs" >Blogs</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/plans" >Plans</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/signup">Sign Up</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/signin">Sign In</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/logout">Log Out</Link></li>
+                            <li><Link className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/") ? "bg-gray-200 rounded" : "" } `} href="/">Home</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/about") ? "bg-gray-200 rounded" : "" } ` } href="/about" >About</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/courses") ? "bg-gray-200 rounded" : "" }` } href="/courses" >Courses</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/blogs") ? "bg-gray-200 rounded" : "" }` } href="/blogs" >Blogs</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/plans") ? "bg-gray-200 rounded" : "" }` } href="/plans" >Plans</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/signup") ? "bg-gray-200 rounded" : "" }` } href="/signup">Sign Up</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/signin") ? "bg-gray-200 rounded" : "" }` } href="/signin">Sign In</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white` } href="/logout">Log Out</Link></li>
                         </ul>
                     </nav>
                 </div>
