@@ -12,7 +12,7 @@ export default function HeaderComponent(){
     return(
         <>
             <header className="relative" >
-                <section className="w-full text-center">
+                <section className="w-full text-center min-[0px]:mb-[15px] sm:mb-[20px]">
                     <Link href={"/"}><h1 className="text-center font-bold text-[25px] hover:underline inline cursor-pointer active:text-yellow-200" >Hour Class</h1></Link>
                 </section>
 
@@ -31,10 +31,13 @@ export default function HeaderComponent(){
                     <nav className={`z-10 absolute top-[50px] right-[20px]  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 ${Hamberger ? "block":"hidden"} `}>
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                             <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/">Home</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/" >About</Link></li>
+                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/about" >About</Link></li>
+                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/courses" >Courses</Link></li>
+                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/blogs" >Blogs</Link></li>
+                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/plans" >Plans</Link></li>
                             <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/signup">Sign Up</Link></li>
                             <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/signin">Sign In</Link></li>
-                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/">Log Out</Link></li>
+                            <li><Link className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="/logout">Log Out</Link></li>
                         </ul>
                     </nav>
                 </div>
