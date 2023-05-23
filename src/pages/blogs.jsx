@@ -6,7 +6,7 @@ export default function BlogPage(){
     let list = []
 
     for(let i = 0; i < 20; i++){
-        list.push( <CardComponent title={"Hello World"} picture={ilu} button={"Read more"} /> )
+        list.push( <CardComponent title={"Hello world"} link={"blogs"} picture={ilu} button={"Read more"} /> )
     }
 
     return(
