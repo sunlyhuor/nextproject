@@ -35,7 +35,7 @@ export default function CoursePage( { datas } ){
                     { 
                         datas? datas.responses.map(( d , k )=>{
                             return(
-                                <CardComponent button={"See more"} key={k} title={ d.course_title } price={d.course_price} picture={d.course_thumbnail} link={"/"} discount={d.course_discount} date={new Date( d.course_discount_date )} />
+                                <CardComponent button={"See more"} key={k} title={ d.course_title } price={d.course_price} picture={d.course_thumbnail} link={"/courses/"+d.course_title} discount={d.course_discount} date={new Date( d.course_discount_date )} />
                             )
                         }) :<h1>No Data</h1>
                     }
