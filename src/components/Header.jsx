@@ -7,10 +7,15 @@ import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faBurger , faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useRouter } from "next/router"
+import { getCookie , hasCookie } from "cookies-next"
+import SignInAndSignUpAndSignOut from "./SignInAndSignUpAndSignOutComponent"
 
 export default function HeaderComponent(){
     let [ Hamberger , setHamberger ] = useState(false)
     let router = useRouter()
+
+    
+
     return(
         <>
             <header className="relative" >
@@ -37,9 +42,10 @@ export default function HeaderComponent(){
                             <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/courses") ? "bg-gray-200 rounded" : "" }` } href="/courses" >Courses</Link></li>
                             <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/blogs") ? "bg-gray-200 rounded" : "" }` } href="/blogs" >Blogs</Link></li>
                             <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/plans") ? "bg-gray-200 rounded" : "" }` } href="/plans" >Plans</Link></li>
-                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/signup") ? "bg-gray-200 rounded" : "" }` } href="/signup">Sign Up</Link></li>
-                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/signin") ? "bg-gray-200 rounded" : "" }` } href="/signin">Sign In</Link></li>
-                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white` } href="/logout">Log Out</Link></li>
+                            {/* <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${(router.asPath == "/signup") ? "bg-gray-200 rounded" : "" }` } href="/signup">Sign Up</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${((router.asPath == "/signin") ? "bg-gray-200 rounded" : "" ) } ` } href="/signin">Sign In</Link></li>
+                            <li><Link className={ `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white` } href="/logout">Log Out</Link></li> */}
+                            <SignInAndSignUpAndSignOut />
                         </ul>
                     </nav>
                 </div>

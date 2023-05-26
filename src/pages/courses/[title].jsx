@@ -17,13 +17,12 @@ export async function getServerSideProps({params}){
 
 export default function CourseSignlepage({data}){
 
-    console.log( data )
 
     return(
         <>
             <main>
                 <Head>
-                    <title>{data[0].title} Sun LyHuor</title>
+                    <title>{data[0].course_title} Sun LyHuor</title>
                 </Head>
                 <section>
                     <aside>

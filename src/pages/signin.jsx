@@ -5,18 +5,22 @@ import formimage from "@/assets/pictures/illustration.svg"
 import Image from "next/image"
 import AlertComponent from "@/components/Alert"
 import { useEffect, useState } from "react"
-import { validateEmail } from "@/assets/components/components"
+import { BackendLink, validateEmail } from "@/assets/components/components"
 import Head from "next/head"
 import Link from "next/link"
+import axios from "axios"
+import {getCookie, setCookie} from "cookies-next"
+import { useRouter } from "next/router"
 
 export default function SigninPage(){
 
     let [ Alert , setAlert ] = useState(false)
+    let [Loading , setLoading] = useState(false)
     let [Message , setMessage] = useState(null)
     let [ Email , setEmail ] = useState(null)
     let [Password , setPassword] = useState("")
+    const Router = useRouter()
 
-    
     function handleInputEmail(e){
         setEmail( e.target.value )
     }
@@ -33,7 +37,7 @@ export default function SigninPage(){
 
     }
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if( Password == "" || Email == "" ){
             setAlert(true)
             setMessage("All fields are required!")
@@ -43,10 +47,35 @@ export default function SigninPage(){
             setMessage("Email should like? example@test.com")
         }
         else{
-            setAlert(true)
-            setMessage("Signin successfully")
+            try {
+                setLoading(true)
+                const data = await axios.post(BackendLink() + "/api/v1/auth/signin" , {
+                    email:Email,
+                    password:Password
+                } )
+                setCookie("logined" , true)
+                setAlert(true)
+                setMessage( data.data.message )
+            } catch (error) {
+                setCookie("logined" , false)
+                setLoading(true)
+                setAlert(true)
+                setMessage( error.response.data.message )
+            }
+            finally{
+                setLoading(false)
+            }
+            
         }
     }
+
+    useEffect(()=>{
+
+        if(getCookie("logined") == true ){
+            Router.push("/")
+        }
+
+    } , [ getCookie("logined") ] )
 
     return(
         <>
@@ -107,7 +136,14 @@ export default function SigninPage(){
                                 
                             </div>
                             <div>
-                                <button onClick={ handleSubmit } className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white mb-[20px] " >Sign in to your account</button>
+                                {
+                                    Loading ? (
+                                            <button className="bg-red-400 w-full p-2 rounded-[20px] text-xl text-white" >Watting..</button>
+                                        ):(
+                                            <button onClick={ handleSubmit } className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white mb-[20px] " >Sign in to your account</button>
+                                    )   
+                                }
+                                {/* <button onClick={ handleSubmit } className="w-full active:bg-yellow-300 min-[0px]:p-2 min-[0px]:text-sm sm:text-base sm:p-2 rounded-[15px] bg-blue-500 text-white mb-[20px] " >Sign in to your account</button> */}
                             </div>
 
                         </div>
